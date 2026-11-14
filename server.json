@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.neaticons/icons",
+  "title": "Neat Icons",
+  "description": "Search 1,161 icons in 4 styles and get SVG, React or data URI code. Free icons need no key.",
+  "version": "0.2.0",
+  "websiteUrl": "https://neaticons.com/mcp",
+  "icons": [{ "src": "https://neaticons.com/icon.svg", "mimeType": "image/svg+xml", "sizes": ["any"] }],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.neaticons.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Optional. Bearer <seat key> from neaticons.com/activate unlocks every icon. Leave it out for the free icons.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
