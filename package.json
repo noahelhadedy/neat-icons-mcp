@@ -1,0 +1,10 @@
+{
+  "name": "neat-icons-mcp",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Search 1,161 icons in 4 styles and get SVG, React or data URI code. Hosted MCP server, free icons need no key.",
+  "homepage": "https://neaticons.com/mcp",
+  "repository": "github:noahelhadedy/neat-icons-mcp",
+  "keywords": ["mcp", "mcp-server", "icons", "svg", "react", "design"],
+  "author": "DjectStudio <hello@djectstudio.com>"
+}

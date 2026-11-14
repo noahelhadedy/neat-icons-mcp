@@ -1,0 +1,181 @@
+{
+  "author": "DjectStudio",
+  "cloudEndpoint": "https://mcp.neaticons.com/mcp",
+  "description": "Search 1,161 icons in 4 styles and get SVG, React or data URI code. Hosted MCP server, free icons need no key.",
+  "homepage": "https://neaticons.com/mcp",
+  "identifier": "noahelhadedy-neat-icons-mcp",
+  "name": "Neat Icons",
+  "prompts": [],
+  "resources": [],
+  "tags": [
+    "mcp",
+    "mcp-server",
+    "icons",
+    "svg",
+    "react",
+    "design"
+  ],
+  "tools": [
+    {
+      "name": "search_icons",
+      "description": "Search Neat Icons (1161 icons, 4 styles, 24px grid). Use plain words for what the icon shows (\"wallet\", \"arrow left\", \"hijri calendar\"). Returns icon names to pass to get_icon. Each result says free: true or false. Free mode (no seat key): every icon can be searched, 201 free ones come back as code; the rest need a license (https://neaticons.com/#pricing).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "What the icon should show, e.g. 'delete', 'saudi riyal', 'user add'"
+          },
+          "category": {
+            "type": "string",
+            "description": "Optional category id or title from list_categories"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 24
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "list_categories",
+      "description": "All Neat Icons categories with their id and icon count.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "get_icon",
+      "description": "One icon as ready-to-paste code. format svg = SVG markup, jsx = a React component, data-uri = for CSS or <img>. Default color currentColor so it follows the text color. Free mode (no seat key): every icon can be searched, 201 free ones come back as code; the rest need a license (https://neaticons.com/#pricing).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Exact icon name from search_icons, e.g. 'wallet'"
+          },
+          "style": {
+            "type": "string",
+            "enum": [
+              "rounded-stroke",
+              "rounded-solid",
+              "sharp-stroke",
+              "sharp-solid"
+            ],
+            "default": "rounded-stroke",
+            "description": "rounded-stroke (default, calm UI), rounded-solid (selected / active), sharp-stroke, sharp-solid"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 512,
+            "default": 24
+          },
+          "color": {
+            "type": "string",
+            "default": "currentColor",
+            "description": "Any CSS color; keep currentColor to inherit"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "svg",
+              "jsx",
+              "data-uri"
+            ],
+            "default": "svg"
+          },
+          "animated": {
+            "type": "boolean",
+            "default": false,
+            "description": "true = the icon's hover animation. format svg returns inline SVG with its own <style> (paste it into the HTML, not an <img>); format jsx returns an import from @neaticons/react/animated. data-uri can't animate."
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "get_icons",
+      "description": "Several icons at once (same style, size, color, format). Use for nav bars, tab bars, menus. Free mode (no seat key): every icon can be searched, 201 free ones come back as code; the rest need a license (https://neaticons.com/#pricing).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 40
+          },
+          "style": {
+            "type": "string",
+            "enum": [
+              "rounded-stroke",
+              "rounded-solid",
+              "sharp-stroke",
+              "sharp-solid"
+            ],
+            "default": "rounded-stroke",
+            "description": "rounded-stroke (default, calm UI), rounded-solid (selected / active), sharp-stroke, sharp-solid"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 512,
+            "default": 24
+          },
+          "color": {
+            "type": "string",
+            "default": "currentColor"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "svg",
+              "jsx",
+              "data-uri"
+            ],
+            "default": "svg"
+          },
+          "animated": {
+            "type": "boolean",
+            "default": false,
+            "description": "true = the icon's hover animation. format svg returns inline SVG with its own <style> (paste it into the HTML, not an <img>); format jsx returns an import from @neaticons/react/animated. data-uri can't animate."
+          }
+        },
+        "required": [
+          "names"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "version": "0.2.0"
+}
